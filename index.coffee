@@ -6,8 +6,10 @@ YAML = require 'yamljs'
 isArray = require 'lodash/isArray'
 
 
-module.exports = (bookshelf, fixtureFileNames) ->
+module.exports = (bookshelf, fixtureFileNames, currentDir) ->
   fixtureFileNames = [fixtureFileNames] unless isArray fixtureFileNames
+  if currentDir?
+    fixtureFileNames = (path.resolve(currentDir, 'fixtures', fixtureFileName) for fixtureFileName in fixtureFileNames)
 
   for fixtureFileName in fixtureFileNames
     ext = path.extname fixtureFileName

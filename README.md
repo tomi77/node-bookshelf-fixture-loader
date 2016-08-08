@@ -44,7 +44,6 @@ Fixture file format is inspired by Django fixture file format.
 In test file:
 
 ~~~coffeescript
-path = require 'path'
 BookshelfFixtureLoader = require 'bookshelf-fixture-loader'
 
 knex = require('knex')
@@ -58,12 +57,18 @@ bookshelf.plugin 'registry'
 
 describe 'BookshelfFixtureLoader', () ->
   it 'should load json file', () ->
-    BookshelfFixtureLoader bookshelf, path.resolve __dirname, 'fixtures', 'test.json'
+    BookshelfFixtureLoader bookshelf, 'test.json', __dirname
 
     Model = bookshelf.model('Test')
     Model.forge(id: 1).fetch().then (row) ->
       row.get('name').should.equal 'test 1'
       return
+~~~
+
+or define full path:
+
+~~~coffeescript
+BookshelfFixtureLoader bookshelf, '/path/to/fixtures/test.yaml'
 ~~~
 
 ## TODO

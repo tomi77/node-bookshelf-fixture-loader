@@ -28,7 +28,7 @@ beforeEach () ->
 describe 'BookshelfFixtureLoader', () ->
   describe 'should load fixtures from', () ->
     it 'JSON file', () ->
-      BookshelfFixtureLoader bookshelf, path.resolve __dirname, 'fixtures', 'test.json'
+      BookshelfFixtureLoader bookshelf, 'test.json', __dirname
 
       Model = bookshelf.model('Test')
       Model.forge(id: 1).fetch().then (row) ->
@@ -36,7 +36,7 @@ describe 'BookshelfFixtureLoader', () ->
         return
 
     it 'YAML file', () ->
-      BookshelfFixtureLoader bookshelf, path.resolve __dirname, 'fixtures', 'test.yaml'
+      BookshelfFixtureLoader bookshelf, 'test.yaml', __dirname
 
       Model = bookshelf.model('Test')
       Model.forge(id: 2).fetch().then (row) ->
@@ -44,26 +44,31 @@ describe 'BookshelfFixtureLoader', () ->
         return
 
     it 'many files', () ->
-      BookshelfFixtureLoader bookshelf, [
-        path.resolve __dirname, 'fixtures', 'test.json'
-        path.resolve __dirname, 'fixtures', 'test.yaml'
-      ]
+      BookshelfFixtureLoader bookshelf, ['test.json', 'test.yaml'], __dirname
 
       Model = bookshelf.model('Test')
       Model.count().then (cnt) ->
         assert.equal cnt, 2
         return
 
+    it 'file with full path', () ->
+      BookshelfFixtureLoader bookshelf, path.resolve(__dirname, 'fixtures', 'test.yaml')
+
+      Model = bookshelf.model('Test')
+      Model.forge(id: 2).fetch().then (row) ->
+        assert.equal row.get('name'), 'test 2'
+        return
+
   describe 'should throw Error', () ->
     it 'when cannot find module', () ->
       bfl = () ->
-        BookshelfFixtureLoader bookshelf, path.resolve __dirname, 'fixtures', 'no_module.yaml'
+        BookshelfFixtureLoader bookshelf, 'no_module.yaml', __dirname
         return
       assert.throws bfl, Error, 'Undefined model: NonExistent'
 
     it 'when use unsupported format', () ->
       bfl = () ->
-        BookshelfFixtureLoader bookshelf, path.resolve __dirname, 'fixtures', 'unsupported.csv'
+        BookshelfFixtureLoader bookshelf, 'unsupported.csv', __dirname
         return
       assert.throws bfl, Error, 'Unsupported format: .csv'
 
