@@ -1,5 +1,5 @@
 {
-  "name": "bookshelf-fixtures",
+  "name": "bookshelf-fixture-loader",
   "version": "0.1.0",
   "description": "Bookshelf fixtures loader",
   "main": "index.coffee",
@@ -9,19 +9,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tomi77/node-bookshelf-fixtures.git"
+    "url": "git+https://github.com/tomi77/node-bookshelf-fixture-loader.git"
   },
   "keywords": [
     "bookshelf",
-    "fixtures",
+    "fixture",
     "test"
   ],
   "author": "Tomasz Jakub Rup",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/tomi77/node-bookshelf-fixtures/issues"
+    "url": "https://github.com/tomi77/node-bookshelf-fixture-loader/issues"
   },
-  "homepage": "https://github.com/tomi77/node-bookshelf-fixtures",
+  "homepage": "https://github.com/tomi77/node-bookshelf-fixture-loader",
   "dependencies": {
     "bookshelf": "^0.10.0",
     "coffee-script": "^1.10.0",
