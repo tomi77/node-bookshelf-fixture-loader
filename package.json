@@ -1,0 +1,23 @@
+{
+  "name": "bookshelf-fixtures",
+  "version": "0.1.0",
+  "description": "Bookshelf fixtures loader",
+  "main": "index.coffee",
+  "scripts": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tomi77/node-bookshelf-fixtures.git"
+  },
+  "keywords": [
+    "bookshelf",
+    "fixtures",
+    "test"
+  ],
+  "author": "Tomasz Jakub Rup",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tomi77/node-bookshelf-fixtures/issues"
+  },
+  "homepage": "https://github.com/tomi77/node-bookshelf-fixtures"
+}
