@@ -1,6 +1,5 @@
 path = require 'path'
 
-require('chai').should()
 assert = require('chai').assert
 
 BookshelfFixtureLoader = require '..'
@@ -33,7 +32,7 @@ describe 'BookshelfFixtureLoader', () ->
 
       Model = bookshelf.model('Test')
       Model.forge(id: 1).fetch().then (row) ->
-        row.get('name').should.equal 'test 1'
+        assert.equal row.get('name'), 'test 1'
         return
 
     it 'YAML file', () ->
@@ -41,7 +40,7 @@ describe 'BookshelfFixtureLoader', () ->
 
       Model = bookshelf.model('Test')
       Model.forge(id: 2).fetch().then (row) ->
-        row.get('name').should.equal 'test 2'
+        assert.equal row.get('name'), 'test 2'
         return
 
     it 'many files', () ->
@@ -52,7 +51,7 @@ describe 'BookshelfFixtureLoader', () ->
 
       Model = bookshelf.model('Test')
       Model.count().then (cnt) ->
-        cnt.should.equal 2
+        assert.equal cnt, 2
         return
 
   describe 'should throw Error', () ->
