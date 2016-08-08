@@ -1,0 +1,4 @@
+- id: 3
+  model: 'NonExistent'
+  fields:
+    name: 'test 2'
