@@ -24,5 +24,8 @@
   "dependencies": {
     "bookshelf": "^0.10.0",
     "knex": "^0.11.9"
+  },
+  "devDependencies": {
+    "coffeelint": "^1.15.7"
   }
 }
