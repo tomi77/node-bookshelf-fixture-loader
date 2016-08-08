@@ -25,6 +25,7 @@ before () ->
 describe 'BookshelfFixtureLoader', () ->
   it 'should load json file', () ->
     BookshelfFixtureLoader bookshelf, path.resolve __dirname, 'fixtures', 'test.json'
+
     Model = bookshelf.model('Test')
     Model.forge(id: 1).fetch().then (row) ->
       row.get('name').should.equal 'test 1'
@@ -32,6 +33,7 @@ describe 'BookshelfFixtureLoader', () ->
 
   it 'should load yaml file', () ->
     BookshelfFixtureLoader bookshelf, path.resolve __dirname, 'fixtures', 'test.yaml'
+
     Model = bookshelf.model('Test')
     Model.forge(id: 2).fetch().then (row) ->
       row.get('name').should.equal 'test 2'
