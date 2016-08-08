@@ -27,7 +27,7 @@ beforeEach () ->
   knex('test').del()
 
 describe 'BookshelfFixtureLoader', () ->
-  describe 'should load', () ->
+  describe 'should load fixtures from', () ->
     it 'JSON file', () ->
       BookshelfFixtureLoader bookshelf, path.resolve __dirname, 'fixtures', 'test.json'
 
