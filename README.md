@@ -2,6 +2,8 @@
 
 Bookshelf fixtures loader
 
+[![Build Status](https://travis-ci.org/tomi77/node-bookshelf-fixture-loader.svg?branch=master)](https://travis-ci.org/tomi77/node-bookshelf-fixture-loader)
+[![Coverage Status](https://coveralls.io/repos/github/tomi77/node-bookshelf-fixture-loader/badge.svg?branch=master)](https://coveralls.io/github/tomi77/node-bookshelf-fixture-loader?branch=master)
 [![Code Climate](https://codeclimate.com/github/tomi77/node-bookshelf-fixture-loader/badges/gpa.svg)](https://codeclimate.com/github/tomi77/node-bookshelf-fixture-loader)
 [![dependencies Status](https://david-dm.org/tomi77/node-bookshelf-fixture-loader/status.svg)](https://david-dm.org/tomi77/node-bookshelf-fixture-loader)
 [![devDependencies Status](https://david-dm.org/tomi77/node-bookshelf-fixture-loader/dev-status.svg)](https://david-dm.org/tomi77/node-bookshelf-fixture-loader?type=dev)
