@@ -65,3 +65,7 @@ describe 'BookshelfFixtureLoader', () ->
       row.get('name').should.equal 'test 1'
       return
 ~~~
+
+## TODO
+
+* Tool to copy data from DB to fixture file
