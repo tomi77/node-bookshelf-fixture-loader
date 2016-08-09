@@ -70,7 +70,3 @@ or define full path:
 ~~~coffeescript
 BookshelfFixtureLoader bookshelf, '/path/to/fixtures/test.yaml'
 ~~~
-
-## TODO
-
-* Tool to copy data from DB to fixture file
