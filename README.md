@@ -53,11 +53,11 @@ knex = require('knex')
 bookshelf = require('bookshelf') knex
 bookshelf.plugin 'registry'
 
-BookshelfFixtureLoader = require('bookshelf-fixture-loader') bookshelf
+BookshelfFixtureLoader = require('bookshelf-fixture-loader') bookshelf, __dirname
 
 describe 'BookshelfFixtureLoader', () ->
   it 'should load json file', () ->
-    BookshelfFixtureLoader 'test.json', __dirname
+    BookshelfFixtureLoader 'test.json'
 
     Model = bookshelf.model('Test')
     Model.forge(id: 1).fetch().then (row) ->
@@ -77,11 +77,11 @@ var knex = require('knex')({
 var bookshelf = require('bookshelf')(knex);
 bookshelf.plugin('registry');
 
-var BookshelfFixtureLoader = require('bookshelf-fixture-loader')(bookshelf);
+var BookshelfFixtureLoader = require('bookshelf-fixture-loader')(bookshelf, __dirname);
 
 describe('BookshelfFixtureLoader', function() {
   it('should load json file', function() {
-    BookshelfFixtureLoader('test.json', __dirname);
+    BookshelfFixtureLoader('test.json');
 
     var Model = bookshelf.model('Test');
     Model.forge({id: 1}).fetch().then(function(row) {
