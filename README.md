@@ -91,7 +91,7 @@ describe('BookshelfFixtureLoader', function() {
 });
 ~~~
 
-or define full path:
+or define absolute path:
 
 ~~~coffeescript
 BookshelfFixtureLoader '/path/to/fixtures/test.yaml'
