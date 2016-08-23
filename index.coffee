@@ -6,26 +6,27 @@ YAML = require 'yamljs'
 isArray = require 'lodash/isArray'
 
 
-module.exports = (bookshelf, fixtureFileNames, currentDir) ->
-  fixtureFileNames = [fixtureFileNames] unless isArray fixtureFileNames
-  if currentDir?
-    fixtureFileNames = (path.resolve(currentDir, 'fixtures', fixtureFileName) for fixtureFileName in fixtureFileNames)
+module.exports = (bookshelf) ->
+  (fixtureFileNames, currentDir) ->
+    fixtureFileNames = [fixtureFileNames] unless isArray fixtureFileNames
+    if currentDir?
+      fixtureFileNames = (path.resolve(currentDir, 'fixtures', fixtureFileName) for fixtureFileName in fixtureFileNames)
 
-  for fixtureFileName in fixtureFileNames
-    ext = path.extname fixtureFileName
+    for fixtureFileName in fixtureFileNames
+      ext = path.extname fixtureFileName
 
-    fixtures = switch ext
-      when '.json'
-        jsonFile.readFileSync fixtureFileName
-      when '.yml', '.yaml'
-        YAML.load fixtureFileName
-      else
-        throw new Error "Unsupported format: #{ ext }"
+      fixtures = switch ext
+        when '.json'
+          jsonFile.readFileSync fixtureFileName
+        when '.yml', '.yaml'
+          YAML.load fixtureFileName
+        else
+          throw new Error "Unsupported format: #{ ext }"
 
-    for fixture in fixtures
-      Model = bookshelf.model fixture.model
-      unless Model?
-        throw new Error "Undefined model: #{ fixture.model }"
+      for fixture in fixtures
+        Model = bookshelf.model fixture.model
+        unless Model?
+          throw new Error "Undefined model: #{ fixture.model }"
 
-      new Model id: fixture.id
-      .save fixture.fields, method: 'insert'
+        new Model id: fixture.id
+        .save fixture.fields, method: 'insert'

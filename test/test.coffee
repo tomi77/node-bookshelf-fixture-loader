@@ -2,8 +2,6 @@ path = require 'path'
 
 assert = require('chai').assert
 
-BookshelfFixtureLoader = require '..'
-
 knex = require('knex')
   client: 'sqlite3'
   connection:
@@ -12,6 +10,8 @@ knex = require('knex')
 
 bookshelf = require('bookshelf') knex
 bookshelf.plugin 'registry'
+
+BookshelfFixtureLoader = require('..') bookshelf
 
 before () ->
   bookshelf.model 'Test',
@@ -28,7 +28,7 @@ beforeEach () ->
 describe 'BookshelfFixtureLoader', () ->
   describe 'should load fixtures from', () ->
     it 'JSON file', () ->
-      BookshelfFixtureLoader bookshelf, 'test.json', __dirname
+      BookshelfFixtureLoader 'test.json', __dirname
 
       Model = bookshelf.model('Test')
       Model.forge(id: 1).fetch().then (row) ->
@@ -36,7 +36,7 @@ describe 'BookshelfFixtureLoader', () ->
         return
 
     it 'YAML file', () ->
-      BookshelfFixtureLoader bookshelf, 'test.yaml', __dirname
+      BookshelfFixtureLoader 'test.yaml', __dirname
 
       Model = bookshelf.model('Test')
       Model.forge(id: 2).fetch().then (row) ->
@@ -44,7 +44,7 @@ describe 'BookshelfFixtureLoader', () ->
         return
 
     it 'many files', () ->
-      BookshelfFixtureLoader bookshelf, ['test.json', 'test.yaml'], __dirname
+      BookshelfFixtureLoader ['test.json', 'test.yaml'], __dirname
 
       Model = bookshelf.model('Test')
       Model.count().then (cnt) ->
@@ -52,7 +52,7 @@ describe 'BookshelfFixtureLoader', () ->
         return
 
     it 'file with full path', () ->
-      BookshelfFixtureLoader bookshelf, path.resolve(__dirname, 'fixtures', 'test.yaml')
+      BookshelfFixtureLoader path.resolve(__dirname, 'fixtures', 'test.yaml')
 
       Model = bookshelf.model('Test')
       Model.forge(id: 2).fetch().then (row) ->
@@ -62,13 +62,13 @@ describe 'BookshelfFixtureLoader', () ->
   describe 'should throw Error', () ->
     it 'when cannot find module', () ->
       bfl = () ->
-        BookshelfFixtureLoader bookshelf, 'no_module.yaml', __dirname
+        BookshelfFixtureLoader 'no_module.yaml', __dirname
         return
       assert.throws bfl, Error, 'Undefined model: NonExistent'
 
     it 'when use unsupported format', () ->
       bfl = () ->
-        BookshelfFixtureLoader bookshelf, 'unsupported.csv', __dirname
+        BookshelfFixtureLoader 'unsupported.csv', __dirname
         return
       assert.throws bfl, Error, 'Unsupported format: .csv'
 

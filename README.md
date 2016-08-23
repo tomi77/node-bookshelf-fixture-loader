@@ -44,8 +44,6 @@ Fixture file format is inspired by Django fixture file format.
 In test file:
 
 ~~~coffeescript
-BookshelfFixtureLoader = require 'bookshelf-fixture-loader'
-
 knex = require('knex')
   client: 'sqlite3'
   connection:
@@ -55,9 +53,11 @@ knex = require('knex')
 bookshelf = require('bookshelf') knex
 bookshelf.plugin 'registry'
 
+BookshelfFixtureLoader = require('bookshelf-fixture-loader') bookshelf
+
 describe 'BookshelfFixtureLoader', () ->
   it 'should load json file', () ->
-    BookshelfFixtureLoader bookshelf, 'test.json', __dirname
+    BookshelfFixtureLoader 'test.json', __dirname
 
     Model = bookshelf.model('Test')
     Model.forge(id: 1).fetch().then (row) ->
@@ -65,8 +65,38 @@ describe 'BookshelfFixtureLoader', () ->
       return
 ~~~
 
+~~~js
+var knex = require('knex')({
+  client: 'sqlite3',
+  connection: {
+    filename: ':memory:'
+  },
+  useNullAsDefault: true
+});
+
+var bookshelf = require('bookshelf')(knex);
+bookshelf.plugin('registry');
+
+var BookshelfFixtureLoader = require('bookshelf-fixture-loader')(bookshelf);
+
+describe('BookshelfFixtureLoader', function() {
+  it('should load json file', function() {
+    BookshelfFixtureLoader('test.json', __dirname);
+
+    var Model = bookshelf.model('Test');
+    Model.forge({id: 1}).fetch().then(function(row) {
+      row.get('name').should.equal('test 1');
+    });
+  });
+});
+~~~
+
 or define full path:
 
 ~~~coffeescript
-BookshelfFixtureLoader bookshelf, '/path/to/fixtures/test.yaml'
+BookshelfFixtureLoader '/path/to/fixtures/test.yaml'
+~~~
+
+~~~js
+BookshelfFixtureLoader('/path/to/fixtures/test.yaml');
 ~~~
