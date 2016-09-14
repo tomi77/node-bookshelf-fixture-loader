@@ -1,6 +1,10 @@
 # Changelog
 
-## master
+## 0.2.1
+
+* Update dependencies
+
+## 0.2.0
 
 ### News
 
