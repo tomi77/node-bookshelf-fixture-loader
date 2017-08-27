@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.3.0
+
+* Update dependencies
+* Deploy .js instead of .coffee
+
 ## 0.2.1
 
 * Update dependencies
