@@ -2,7 +2,7 @@
   "name": "bookshelf-fixture-loader",
   "version": "0.3.0",
   "description": "Bookshelf fixtures loader",
-  "main": "index.coffee",
+  "main": "index.js",
   "scripts": {
     "prepare": "coffee --bare --compile --output . src/index.coffee",
     "lint": "coffeelint index.coffee",
