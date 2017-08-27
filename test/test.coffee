@@ -11,7 +11,7 @@ knex = require('knex')
 bookshelf = require('bookshelf') knex
 bookshelf.plugin 'registry'
 
-BookshelfFixtureLoader = require('..') bookshelf, __dirname
+BookshelfFixtureLoader = require('../src') bookshelf, __dirname
 
 before () ->
   bookshelf.model 'Test',

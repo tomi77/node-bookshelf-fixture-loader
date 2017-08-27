@@ -38,3 +38,6 @@ jspm_packages
 
 # Idea IDE
 .idea
+
+# Auto generated files
+*.js
