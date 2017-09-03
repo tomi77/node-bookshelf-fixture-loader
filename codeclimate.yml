@@ -6,4 +6,4 @@ engines:
 
 ratings:
   paths:
-  - "index.coffee"
+  - "src/index.coffee"
