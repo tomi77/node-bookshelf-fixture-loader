@@ -7,6 +7,7 @@ Bookshelf fixtures loader
 [![Code Climate](https://codeclimate.com/github/tomi77/node-bookshelf-fixture-loader/badges/gpa.svg)](https://codeclimate.com/github/tomi77/node-bookshelf-fixture-loader)
 [![dependencies Status](https://david-dm.org/tomi77/node-bookshelf-fixture-loader/status.svg)](https://david-dm.org/tomi77/node-bookshelf-fixture-loader)
 [![devDependencies Status](https://david-dm.org/tomi77/node-bookshelf-fixture-loader/dev-status.svg)](https://david-dm.org/tomi77/node-bookshelf-fixture-loader?type=dev)
+[![peerDependencies Status](https://david-dm.org/tomi77/node-bookshelf-fixture-loader/peer-status.svg)](https://david-dm.org/tomi77/node-bookshelf-fixture-loader?type=peer)
 ![Downloads](https://img.shields.io/npm/dt/bookshelf-fixture-loader.svg)
 
 ## Installation
