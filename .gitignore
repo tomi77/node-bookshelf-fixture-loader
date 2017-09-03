@@ -41,3 +41,4 @@ jspm_packages
 
 # Auto generated files
 *.js
+package-lock.json
