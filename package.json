@@ -42,7 +42,6 @@
     "sqlite3": "^3.1.9"
   },
   "peerDependencies": {
-    "bookshelf": "^0.10.0",
-    "knex": "^0.13.0"
+    "bookshelf": "^0.10.0"
   }
 }

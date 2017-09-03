@@ -2,7 +2,8 @@
 
 ## master
 
-* Move ``bookshelf`` and ``knex`` from `dependencies` to `peerDependencies`
+* Move ``bookshelf`` from `dependencies` to `peerDependencies`
+* Remove ``knex`` from dependencies
 
 ## 0.3.1
 
