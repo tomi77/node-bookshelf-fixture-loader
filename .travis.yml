@@ -2,7 +2,7 @@ language: node_js
 
 node_js: node
 
-before_script:
+before_install:
 - npm install bookshelf@0.10.4 knex@0.13.0
 
 script:
