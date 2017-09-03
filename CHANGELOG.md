@@ -1,6 +1,6 @@
 # Changelog
 
-## master
+## 0.3.2
 
 * Move ``bookshelf`` from `dependencies` to `peerDependencies`
 * Remove ``knex`` from dependencies
