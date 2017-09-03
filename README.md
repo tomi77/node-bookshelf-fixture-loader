@@ -12,6 +12,7 @@ Bookshelf fixtures loader
 ## Installation
 
 ~~~bash
+npm install bookshelf@"^0.10.0" knex@"^0.13.0" --save
 npm install bookshelf-fixture-loader --save-dev
 ~~~
 

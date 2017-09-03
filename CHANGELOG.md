@@ -1,5 +1,9 @@
 # Changelog
 
+## master
+
+* Move ``bookshelf`` and ``knex`` from `dependencies` to `peerDependencies`
+
 ## 0.3.1
 
 * fix

@@ -26,20 +26,23 @@
   },
   "homepage": "https://github.com/tomi77/node-bookshelf-fixture-loader",
   "dependencies": {
-    "bookshelf": "^0.10.0",
     "jsonfile": "^3.0.0",
-    "knex": "^0.13.0",
     "lodash": "^4.14.1",
     "yamljs": "^0.3.0"
   },
   "devDependencies": {
-    "chai": "^4.0.0",
+    "chai": "^4.1.2",
     "coffee-coverage": "^2.0.0",
     "coffee-script": "^1.10.0",
     "coffeelint": "^1.15.7",
     "coveralls": "^2.11.12",
     "istanbul": "^0.4.4",
     "mocha": "^3.0.2",
-    "sqlite3": "^3.1.4"
+    "node-pre-gyp": "^0.6.36",
+    "sqlite3": "^3.1.9"
+  },
+  "peerDependencies": {
+    "bookshelf": "^0.10.0",
+    "knex": "^0.13.0"
   }
 }
