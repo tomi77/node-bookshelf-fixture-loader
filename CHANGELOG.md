@@ -1,5 +1,9 @@
 # Changelog
 
+## master
+
+* @deps update
+
 ## 0.3.2
 
 * Move ``bookshelf`` from `dependencies` to `peerDependencies`
