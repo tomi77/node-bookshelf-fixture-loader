@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "prepare": "coffee --bare --compile --output . src/index.coffee",
-    "lint": "coffeelint index.coffee",
+    "lint": "coffeelint src/index.coffee",
     "test": "mocha --compilers coffee:coffee-script/register --require coffee-coverage/register-istanbul --recursive",
     "coverage": "npm test && istanbul report",
     "coveralls": "npm run coverage && cat ./coverage/lcov.info | coveralls"
