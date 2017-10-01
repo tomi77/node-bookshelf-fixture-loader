@@ -33,14 +33,15 @@
   "devDependencies": {
     "chai": "^4.1.2",
     "coffee-coverage": "^2.0.0",
-    "coffeescript": "^2.0.0",
     "coffeelint": "^1.15.7",
+    "coffeescript": "^2.0.0",
     "coveralls": "^2.13.3",
     "istanbul": "^0.4.4",
     "mocha": "^3.5.3",
     "sqlite3": "^3.1.13"
   },
   "peerDependencies": {
-    "bookshelf": "^0.10.0"
+    "bookshelf": "^0.10.4",
+    "knex": "^0.13.0"
   }
 }
