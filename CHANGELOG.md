@@ -1,6 +1,6 @@
 # Changelog
 
-## master
+## 0.3.3
 
 * @deps update
 
