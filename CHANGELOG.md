@@ -1,8 +1,13 @@
 # Changelog
 
+## master
+
+* update dependencies to Coffee-Script v2
+* Promisify fixture loader
+
 ## 0.3.3
 
-* @deps update
+* update dependencies
 
 ## 0.3.2
 

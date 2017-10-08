@@ -26,6 +26,7 @@
   },
   "homepage": "https://github.com/tomi77/node-bookshelf-fixture-loader",
   "dependencies": {
+    "bluebird": "^3.5.0",
     "jsonfile": "^4.0.0",
     "lodash": "^4.14.1",
     "yamljs": "^0.3.0"

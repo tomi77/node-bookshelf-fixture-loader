@@ -57,14 +57,18 @@ var knex = require('knex')({
 var bookshelf = require('bookshelf')(knex);
 bookshelf.plugin('registry');
 
-var BookshelfFixtureLoader = require('bookshelf-fixture-loader')(bookshelf, __dirname);
+var FixtureLoader = require('bookshelf-fixture-loader')(bookshelf, __dirname);
+var fixtures = new FixtureLoader();
+var Model = bookshelf.model('Test');
 
-describe('BookshelfFixtureLoader', function() {
+describe('FixtureLoader', function() {
   it('should load json file', function() {
-    BookshelfFixtureLoader('test.json');
-
-    var Model = bookshelf.model('Test');
-    Model.forge({id: 1}).fetch().then(function(row) {
+    fixtures.load('test.json')
+    .insert()
+    .then(function() {
+      return Model.forge({id: 1}).fetch();
+    })
+    .then(function(row) {
       row.get('name').should.equal('test 1');
     });
   });
@@ -74,5 +78,5 @@ describe('BookshelfFixtureLoader', function() {
 or define absolute path:
 
 ~~~js
-BookshelfFixtureLoader('/path/to/fixtures/test.yaml');
+new FixtureLoader('/path/to/fixtures/test.yaml');
 ~~~

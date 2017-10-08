@@ -11,12 +11,13 @@ knex = require('knex')
 bookshelf = require('bookshelf') knex
 bookshelf.plugin 'registry'
 
-BookshelfFixtureLoader = require('../src') bookshelf, __dirname
+FixtureLoader = require('../src') bookshelf, __dirname
+fixtures = new FixtureLoader()
+
+Model = bookshelf.model 'Test',
+  tableName: 'test'
 
 before () ->
-  bookshelf.model 'Test',
-    tableName: 'test'
-
   knex.schema.createTableIfNotExists 'test', (table) ->
     table.increments()
     table.string 'name'
@@ -25,58 +26,58 @@ before () ->
 beforeEach () ->
   knex('test').del()
 
-describe 'BookshelfFixtureLoader', () ->
+describe 'FixtureLoader', () ->
   describe 'should load fixtures from', () ->
     it 'JSON file', () ->
-      BookshelfFixtureLoader 'test.json'
-
-      Model = bookshelf.model('Test')
-      Model.forge(id: 1).fetch().then (row) ->
+      fixtures.clean().add 'test.json'
+      .insert()
+      .then () -> Model.forge(id: 1).fetch()
+      .then (row) ->
         assert.equal row.get('name'), 'test 1'
         return
 
     it 'YAML file', () ->
-      BookshelfFixtureLoader 'test.yaml'
-
-      Model = bookshelf.model('Test')
-      Model.forge(id: 2).fetch().then (row) ->
+      fixtures.clean().add 'test.yaml'
+      .insert()
+      .then () -> Model.forge(id: 2).fetch()
+      .then (row) ->
         assert.equal row.get('name'), 'test 2'
         return
 
     it 'many files', () ->
-      BookshelfFixtureLoader ['test.json', 'test.yaml']
-
-      Model = bookshelf.model('Test')
-      Model.count().then (cnt) ->
+      fixtures.clean().add ['test.json', 'test.yaml']
+      .insert()
+      .then () -> Model.count()
+      .then (cnt) ->
         assert.equal cnt, 2
         return
 
     it 'file with absolute path', () ->
-      BookshelfFixtureLoader path.resolve(__dirname, 'fixtures', 'test.yaml')
-
-      Model = bookshelf.model('Test')
-      Model.forge(id: 2).fetch().then (row) ->
+      fixtures.clean().add path.resolve(__dirname, 'fixtures', 'test.yaml')
+      .insert()
+      .then () -> Model.forge(id: 2).fetch()
+      .then (row) ->
         assert.equal row.get('name'), 'test 2'
         return
 
     it 'many files with mixed format (absolute path and relative path)', () ->
-      BookshelfFixtureLoader ['test.json', path.resolve(__dirname, 'fixtures', 'test.yaml')]
-
-      Model = bookshelf.model('Test')
-      Model.count().then (cnt) ->
+      fixtures.clean().add('test.json').add(path.resolve(__dirname, 'fixtures', 'test.yaml'))
+      .insert()
+      .then () -> Model.count()
+      .then (cnt) ->
         assert.equal cnt, 2
         return
 
   describe 'should throw Error', () ->
     it 'when cannot find module', () ->
       bfl = () ->
-        BookshelfFixtureLoader 'no_module.yaml'
+        fixtures.clean().add 'no_module.yaml'
         return
       assert.throws bfl, Error, 'Undefined model: NonExistent'
 
     it 'when use unsupported format', () ->
       bfl = () ->
-        BookshelfFixtureLoader 'unsupported.csv'
+        fixtures.clean().add 'unsupported.csv'
         return
       assert.throws bfl, Error, 'Unsupported format: .csv'
 
